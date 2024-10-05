@@ -1,0 +1,315 @@
+<!-- Include Bootstrap JS and jQuery -->
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/images/Kyari.ico">
+    <title>Check Order Details</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <!-- Include toster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <style>
+        .hero-banner {
+    background-image: none !important;
+    height: auto !important;
+    flex-direction: column;
+}
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1140px;
+    }
+}
+.hero-banner h1.mt-5 {
+    font-family: 'FRAUNCES';
+    color: #1C6644 !important;
+    margin: 0 !important;
+}
+label.btn.btn-outline-greenry {
+    border-radius: 50px !important;
+    border: none;
+}
+.btn-group.d-flex.justify-content-center {
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    padding: 3;
+}
+.w-100 {
+    display: none;
+}
+footer {
+    display: none;
+}
+.hero-banner img {
+    width: 140px;
+}
+.form-up-heading {
+    margin: 40px 0 10px;
+    text-align: center;
+}
+.form-control {
+    border-radius: 50px;
+}
+button#submitBtn {
+    background: transparent !important;
+    color: #1c6644;
+    border: 1px solid #1C6644 !important;
+    padding: 7px 90px !important;
+    border-radius: 50px;
+}
+.form-control::placeholder {
+    font-size: 13px;
+}
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <div class="w-100" style="height: 3rem; background-color: var(--primary-color);">
+        <marquee class="top_announce_bar" attribute_name="attribute_value" ....more="" attributes="" style="margin-top: 0.75rem;">
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+          </marquee>
+    </div>
+    <div class="text-center">
+        <img onclick="gotoHome()" src="//kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948" alt="Kyari.co" srcset="//kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=50 50w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=100 100w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=150 150w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=200 200w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=250 250w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=300 300w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=400 400w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=500 500w" width="150" height="42.504534853589014" class="header__heading-logo mt-4 pe-click">
+    </div>
+    <div class="hero-banner mt-4 d-flex align-items-center justify-content-center">
+        <img src="/static/images/truck.gif">
+        <h1 class="mt-5" style="color: rgb(218, 214, 214);">Track your order</h1>
+    </div>
+    <div class="container">
+        <div class="mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="orderForm">
+                        
+                        <div class="btn-group d-flex justify-content-center" role="group" style="text-align: center;">
+                            <input class="btn-check" type="radio" name="req_type" value="ref_id" id="req_type1" onchange="updatePlaceholder()" checked>
+                            <label class="btn btn-outline-greenry" for="req_type1">
+                                Order ID
+                            </label>
+                            <!-- <input class="btn-check" type="radio" value="order_id" name="req_type" id="req_type2" onchange="updatePlaceholder()">
+                            <label class="btn btn-outline-greenry" for="req_type2">
+                                Order ID
+                            </label> -->
+                            <input class="btn-check" type="radio" value="invoice_id" name="req_type" id="req_type3" onchange="updatePlaceholder()">
+                            <label class="btn btn-outline-greenry" for="req_type3">
+                                Invoice ID
+                            </label>
+                        </div>
+                        
+                        <div class="form-group mt-2">
+                            <p class="form-up-heading">Enter your order ID or invoice ID</p>
+                            <label for="ref_no"></label>
+                            <input type="text" class="form-control" id="ref_no" placeholder="Order ref no (details after K-)" name="ref_no" oninput="validateFields()">
+                        </div>
+                        <!-- <div class="form-group mt-3">
+                            <label for="contact_no">Contact Number:</label>
+                            <input type="text" class="form-control" id="contact_no" placeholder="Enter billing contact" name="contact_no" oninput="validateFields()">
+                        </div> -->
+                        <div class="d-flex justify-content-center mt-3">
+                            <button type="submit" id="submitBtn" class="btn btn-primary px-4 py-2" style="background-color: var(--primary-color);" disabled><span id="mySpan"></span> Track</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if error %}
+        <script>
+            toastr.warning("Something went wrong!! Please try again!! ")
+        </script>
+    {% endif %}
+
+    <!-- <div id="loader" class="text-center mt-3" style="display: none;">
+        <div class="mt-2" style="color: var(--primary-color);">Fetching order details...</div>
+    </div> -->
+    
+    <div class="w-100" style="height: 3rem; background-color: white;">
+        <marquee class="bottom_announce_bar" attribute_name="attribute_value" ....more="" attributes="" style="margin-top: 0.75rem;">
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            </marquee>
+    </div>
+
+    <footer style="padding-top:50px;padding-bottom:0px;margin-top:0px;border-top:1px solid rgba(46, 82, 74, 0.08);box-sizing:border-box;background:rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box;background-image:none;background-position-x:0%;background-position-y:0%;background-size:auto;background-repeat-x:repeat;background-repeat-y:repeat;background-origin:padding-box;-webkit-background-clip:border-box;background-color:rgb(249, 249, 249);background-attachment:scroll;color:rgba(46, 82, 74, 0.75);--color-card-hover: 46, 82, 74;--color-badge-background: 255, 255, 255;--color-badge-border: 46, 82, 74;--alpha-badge-border: 0.1;--color-button: 46, 82, 74;--color-button-text: 46, 82, 74;--alpha-button-background: 1;--alpha-button-border: 1;--color-link: 46, 42, 57;--alpha-link: 0.85;--color-foreground: 46, 82, 74;--color-background: 255, 255, 255;--gradient-background: #ffffff;-webkit-background-clip:border-box;">
+        <div style="padding:0px 55px 55px;padding-bottom:55px;display:block;box-sizing:border-box;max-width:1760px;margin: 0px auto;">
+            <div style="row-gap:66px;margin-bottom:0px;column-gap:32px;box-sizing:border-box;display:flex;flex-wrap:wrap;padding:0px;list-style:outside none none;">
+                <div style="display:block;margin-top:0px;width: calc(25% - 32px * 3 / 4);max-width:100%;box-sizing:border-box;flex-grow:1;flex-shrink:0;">
+                    <h2 style="font-size:25px;font-family:Montserrat;margin-bottom:22px;margin-top:0px;box-sizing:border-box;font-style:normal;font-weight:550;letter-spacing:0.78px;color:rgb(46, 82, 74);line-height:31.3462px;word-break:break-word;">About Kyari</h2>
+                    <div style="margin-bottom:0px;box-sizing:border-box;">
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);margin-bottom:0px;margin-top:0px;box-sizing:border-box;">Kyari (a brand of Select) is an experience of a premium lifestyle through plants and planters.<br style="box-sizing:border-box;" /> With a wide range of captivating, perennial, and oh-so-beautiful indoor plants along with the finest quality of planters, Kyari is dedicated to transforming dull and boring spaces into a lush green island.</p>
+                    </div>
+                </div>
+                <div style="display:block;margin-top:0px;width: calc(25% - 32px * 3 / 4);max-width:100%;box-sizing:border-box;flex-grow:1;flex-shrink:0;">
+                    <h2 style="font-size:25px;font-family:Montserrat;margin-bottom:22px;margin-top:0px;box-sizing:border-box;font-style:normal;font-weight:550;letter-spacing:0.78px;color:rgb(46, 82, 74);line-height:31.3462px;word-break:break-word;">Quick links</h2>
+                    <ul style="margin-bottom:0px;box-sizing:border-box;padding:0px;list-style:outside none none;">
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/about-us" style="padding-top:0px;display:inline-block;font-size:14px;padding-bottom:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                About us
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/contact" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Contact us
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/privacy-policy" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/shipping-policy" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Shipping Policy
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/return-and-refund" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Return &amp; Refund
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/terms-conditions" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:underline solid rgb(58, 58, 58);text-underline-offset:3.3px;transition:text-decoration-thickness 0.1s ease 0s;line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;background-color:rgba(0, 0, 0, 0);">
+                                Terms &amp; Conditions
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/return-request" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Return Request
+                            </a>
+                        </li>
+                        <li style="padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/corporate-gifting-new" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Corporate Gifting
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="display:block;margin-top:0px;width: calc(25% - 32px * 3 / 4);max-width:100%;box-sizing:border-box;flex-grow:1;flex-shrink:0;">
+                    <h2 style="font-size:25px;font-family:Montserrat;margin-bottom:22px;margin-top:0px;box-sizing:border-box;font-style:normal;font-weight:550;letter-spacing:0.78px;color:rgb(46, 82, 74);line-height:31.3462px;word-break:break-word;">Get in touch</h2>
+                    <div style="margin-bottom:0px;box-sizing:border-box;">
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);margin-top:0px;box-sizing:border-box;">Address: 1115, Skye Earth Corporate Park AB Rd Indore, Madhya Pradesh 452010</p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);box-sizing:border-box;">Call us for Support: <a href="tel+91 8376885182" title="tel+91 8376885182" style="color:rgb(0, 0, 0);text-underline-offset:3.3px;text-decoration-thickness:auto;transition:text-decoration-thickness 0.1s ease 0s;box-sizing:border-box;text-decoration:none solid rgb(0, 0, 0);">+91 8376885182</a></p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);box-sizing:border-box;"><strong style="box-sizing:border-box;">Email</strong></p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);box-sizing:border-box;">For Support : <a href="mailto:support@kyari.co" title="mailto:support@kyari.co" style="color:rgb(0, 0, 0);text-underline-offset:3.3px;text-decoration-thickness:auto;transition:text-decoration-thickness 0.1s ease 0s;box-sizing:border-box;text-decoration:none solid rgb(0, 0, 0);">support@kyari.co</a></p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);margin-bottom:0px;box-sizing:border-box;">For Bulk Orders : <a href="mailto:corporate@kyari.co" title="mailto:corporate@kyari.co" style="color:rgb(0, 0, 0);text-underline-offset:3.3px;text-decoration-thickness:auto;transition:text-decoration-thickness 0.1s ease 0s;box-sizing:border-box;text-decoration:none solid rgb(0, 0, 0);">corporate@kyari. co</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="flex-wrap:nowrap;justify-content:space-between;display:flex;align-items:flex-end;margin-top:33px;box-sizing:border-box;">
+                <ul role="list" style="display:flex;flex-wrap:wrap-reverse;justify-content:flex-start;flex:1 1 100%;box-sizing:border-box;margin:0px;padding:0px;list-style:outside none none;">
+                    <li style="box-sizing:border-box;">
+                        <a href="https://www.facebook.com/Kyariofficial/" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 18 18" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path fill="currentColor" d="M16.42.61c.27 0 .5.1.69.28.19.2.28.42.28.7v15.44c0 .27-.1.5-.28.69a.94.94 0 01-.7.28h-4.39v-6.7h2.25l.31-2.65h-2.56v-1.7c0-.4.1-.72.28-.93.18-.2.5-.32 1-.32h1.37V3.35c-.6-.06-1.27-.1-2.01-.1-1.01 0-1.83.3-2.45.9-.62.6-.93 1.44-.93 2.53v1.97H7.04v2.65h2.24V18H.98c-.28 0-.5-.1-.7-.28a.94.94 0 01-.28-.7V1.59c0-.27.1-.5.28-.69a.94.94 0 01.7-.28h15.44z" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">Facebook</span> </a>
+                    </li>
+                    <li style="box-sizing:border-box;">
+                        <a href="https://in.pinterest.com/kyari_co/" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 17 18" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path fill="currentColor" d="M8.48.58a8.42 8.42 0 015.9 2.45 8.42 8.42 0 011.33 10.08 8.28 8.28 0 01-7.23 4.16 8.5 8.5 0 01-2.37-.32c.42-.68.7-1.29.85-1.8l.59-2.29c.14.28.41.52.8.73.4.2.8.31 1.24.31.87 0 1.65-.25 2.34-.75a4.87 4.87 0 001.6-2.05 7.3 7.3 0 00.56-2.93c0-1.3-.5-2.41-1.49-3.36a5.27 5.27 0 00-3.8-1.43c-.93 0-1.8.16-2.58.48A5.23 5.23 0 002.85 8.6c0 .75.14 1.41.43 1.98.28.56.7.96 1.27 1.2.1.04.19.04.26 0 .07-.03.12-.1.15-.2l.18-.68c.05-.15.02-.3-.11-.45a2.35 2.35 0 01-.57-1.63A3.96 3.96 0 018.6 4.8c1.09 0 1.94.3 2.54.89.61.6.92 1.37.92 2.32 0 .8-.11 1.54-.33 2.21a3.97 3.97 0 01-.93 1.62c-.4.4-.87.6-1.4.6-.43 0-.78-.15-1.06-.47-.27-.32-.36-.7-.26-1.13a111.14 111.14 0 01.47-1.6l.18-.73c.06-.26.09-.47.09-.65 0-.36-.1-.66-.28-.89-.2-.23-.47-.35-.83-.35-.45 0-.83.2-1.13.62-.3.41-.46.93-.46 1.56a4.1 4.1 0 00.18 1.15l.06.15c-.6 2.58-.95 4.1-1.08 4.54-.12.55-.16 1.2-.13 1.94a8.4 8.4 0 01-5-7.65c0-2.3.81-4.28 2.44-5.9A8.04 8.04 0 018.48.57z" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">Pinterest</span> </a>
+                    </li>
+                    <li style="box-sizing:border-box;">
+                        <a href="https://www.instagram.com/try_kyari/" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 18 18" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path fill="currentColor" d="M8.77 1.58c2.34 0 2.62.01 3.54.05.86.04 1.32.18 1.63.3.41.17.7.35 1.01.66.3.3.5.6.65 1 .12.32.27.78.3 1.64.05.92.06 1.2.06 3.54s-.01 2.62-.05 3.54a4.79 4.79 0 01-.3 1.63c-.17.41-.35.7-.66 1.01-.3.3-.6.5-1.01.66-.31.12-.77.26-1.63.3-.92.04-1.2.05-3.54.05s-2.62 0-3.55-.05a4.79 4.79 0 01-1.62-.3c-.42-.16-.7-.35-1.01-.66-.31-.3-.5-.6-.66-1a4.87 4.87 0 01-.3-1.64c-.04-.92-.05-1.2-.05-3.54s0-2.62.05-3.54c.04-.86.18-1.32.3-1.63.16-.41.35-.7.66-1.01.3-.3.6-.5 1-.65.32-.12.78-.27 1.63-.3.93-.05 1.2-.06 3.55-.06zm0-1.58C6.39 0 6.09.01 5.15.05c-.93.04-1.57.2-2.13.4-.57.23-1.06.54-1.55 1.02C1 1.96.7 2.45.46 3.02c-.22.56-.37 1.2-.4 2.13C0 6.1 0 6.4 0 8.77s.01 2.68.05 3.61c.04.94.2 1.57.4 2.13.23.58.54 1.07 1.02 1.56.49.48.98.78 1.55 1.01.56.22 1.2.37 2.13.4.94.05 1.24.06 3.62.06 2.39 0 2.68-.01 3.62-.05.93-.04 1.57-.2 2.13-.41a4.27 4.27 0 001.55-1.01c.49-.49.79-.98 1.01-1.56.22-.55.37-1.19.41-2.13.04-.93.05-1.23.05-3.61 0-2.39 0-2.68-.05-3.62a6.47 6.47 0 00-.4-2.13 4.27 4.27 0 00-1.02-1.55A4.35 4.35 0 0014.52.46a6.43 6.43 0 00-2.13-.41A69 69 0 008.77 0z" style="box-sizing:border-box;"></path>
+                                <path fill="currentColor" d="M8.8 4a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 7.43a2.92 2.92 0 110-5.85 2.92 2.92 0 010 5.85zM13.43 5a1.05 1.05 0 100-2.1 1.05 1.05 0 000 2.1z" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">Instagram</span> </a>
+                    </li>
+                    <li style="box-sizing:border-box;">
+                        <a href="https://www.youtube.com/channel/UCYMU5VKLGGUG-NivdvfBQ-A" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 100 70" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path d="M98 11c2 7.7 2 24 2 24s0 16.3-2 24a12.5 12.5 0 01-9 9c-7.7 2-39 2-39 2s-31.3 0-39-2a12.5 12.5 0 01-9-9c-2-7.7-2-24-2-24s0-16.3 2-24c1.2-4.4 4.6-7.8 9-9 7.7-2 39-2 39-2s31.3 0 39 2c4.4 1.2 7.8 4.6 9 9zM40 50l26-15-26-15v30z" fill="currentColor" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">YouTube</span> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </footer>
+    
+</body>
+
+
+
+<script>
+    
+    function validateFields() {
+        var refNo = document.getElementById('ref_no').value.trim();
+        // var contactNo = document.getElementById('contact_no').value.trim();
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = !(refNo);
+        // submitBtn.disabled = !(refNo && contactNo);
+    }
+
+    function updatePlaceholder() {
+        var refNoInput = document.getElementById("ref_no");
+        var selectedType = document.querySelector('input[name="req_type"]:checked').value;
+
+        if (selectedType === "ref_id") {
+            refNoInput.placeholder = "Order ref no (details after K-)";
+        } else {
+            refNoInput.placeholder = "Invoice number";
+        }
+    }
+
+
+    $("#orderForm").on("submit", function (event) {
+        event.preventDefault();
+        $('#submitBtn').prop('disabled', true);
+        document.getElementById('mySpan').classList.add('spinner-border', 'spinner-border-sm');
+        var ref_no = $("#ref_no").val();
+        var contact_no = $("#contact_no").val();
+        var orderId = event.target.req_type.value;
+        $.ajax({
+            type: "POST",
+            url: "order/",
+            data: JSON.stringify({
+                order_type: orderId,
+                ref_no: ref_no,
+                contact_no: contact_no
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.status === 200) {
+                    document.getElementById('mySpan').classList.remove('spinner-border', 'spinner-border-sm');
+                    let new_ref_no = encodeURIComponent(data.data.res_data.ref_no)
+                    window.location.href = `tracking_details?ref_no=${new_ref_no}`
+                } else {
+                    $('#submitBtn').prop('disabled', false);
+                    toastr.warning(data.message);
+                }
+            },
+            error: function () {
+                document.getElementById('mySpan').classList.remove('spinner-border', 'spinner-border-sm');
+                toastr.warning("An error occurred. Please try again.")
+            }
+        });
+    });
+</script>
+</html>

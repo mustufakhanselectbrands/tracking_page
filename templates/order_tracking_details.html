@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/images/Kyari.ico">
+    <title>Order Tracking</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <script src="/static/js/apps/order_tracking_details/order_tracking_details.js"></script>
+    <style>
+        .hero-banner img {
+    width: 140px;
+}
+.hero-banner h1.mt-5 {
+    font-family: 'FRAUNCES';
+    color: #1C6644 !important;
+    margin: 0 !important;
+}
+.hero-banner.mt-4.d-flex.align-items-center.justify-content-center {
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.w-100 {
+    display: none;
+}
+footer {
+    display: none;
+}
+.row.gy-3.gx-3.mt-3 {
+    flex-direction: column;
+}
+.col-md-4 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .col-2 {
+    justify-content: flex-start !important;
+    padding: 2px;
+}
+.card-body {
+    padding: 0;
+}
+.pe-click {
+    cursor: pointer !important;
+    border-radius: 33px;
+    padding-left: 12px;
+}
+.row {
+    align-items: center;
+}
+.progress {
+    display: none;
+}
+.latest_status_cus {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.pe-click h3 {
+    font-size: 14px;
+}
+svg.iconarrow {
+    float: right;
+    position: relative;
+    right: 20px;
+}
+.col-md-6.col-12 {
+    padding-bottom: 7px;
+}
+img.plant_image {
+    width: 110px;
+    border-radius: 30px;
+}
+.row.order_id_row {
+    display: none;
+}
+.row.order_id_row:nth-child(1) {
+    display: flex;
+}
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1140px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .hero-banner h1.mt-5 {
+    font-size: 20px;
+}
+.hero-banner.mt-4.d-flex.align-items-center.justify-content-center {
+    max-width: 100%;
+    justify-content: space-around !important;
+}
+.hero-banner img {
+    width: 66px;
+}
+img.plant_image {
+    width: 100%;
+}
+.col-2 {
+    flex: 0 0 auto;
+    width: 30.666667%;
+}
+.col-10 {
+    flex: 0 0 auto;
+    width: 67.333333%;
+}
+.pe-click h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+.row.order_id_row:nth-child(1) .col-4 {
+    width: 100%;
+}
+
+.latest_status_cus {
+    font-size: 11px;
+}
+.card.pe-click.shadow-sm.overflow-hidden {
+    padding:0 10px !important;
+}
+.col-2 {
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.fw-normal {
+    font-size: 13px;
+}
+.fw-normal svg {
+    width: 12px;
+}
+.col-10 {
+    padding-left: 4px;
+}
+.modal-content .col-2.d-flex.align-items-center.justify-content-center.position-relative {
+    width: auto;
+}
+.modal-content .row.mt-2.mx-4 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+img.plant_image {
+        width: 100%;
+        height: 108px;
+        object-fit: cover;
+        border-radius: 20px;
+}
+}
+    </style>
+</head>
+<body>
+    <div class="w-100" style="height: 3rem; background-color: var(--primary-color);">
+        <marquee class="top_announce_bar" attribute_name="attribute_value" ....more="" attributes="" style="margin-top: 0.75rem;">
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+            <span style="color: aliceblue; padding: 0px 20px; font-size: 15px;">Free Shipping on Every Order</span>
+          </marquee>
+    </div>
+    <script>
+        var STATUS_CARD_NUMBER = 0;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div class="text-center">
+        <img onclick="gotoHome()" src="//kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948" alt="Kyari.co" srcset="//kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=50 50w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=100 100w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=150 150w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=200 200w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=250 250w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=300 300w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=400 400w, //kyari.co/cdn/shop/files/kyari_logo_copy.png?v=1668236948&amp;width=500 500w" width="150" height="42.504534853589014" class="header__heading-logo mt-4 pe-click">
+    </div>
+    <div class="hero-banner mt-4 d-flex align-items-center justify-content-center">
+        <h1 class="mt-5" style="color: rgb(218, 214, 214);">Track your order</h1> <img src="/static/images/truck.gif">
+    </div>
+
+    <div class="container mb-3">
+
+        <!-- Loop through suborderIDs -->
+        <div class="row gy-3 gx-3 mt-3">
+            {% for data in context %}
+            <div class="row order_id_row">
+                <div class="col-4">
+                    <p>Order placed on: <b>{{data.order_date}}</b></p>
+                </div>
+                <div class="col-4">
+                    <p>Order ID: <b>{{data.reference_code}}</b></p>
+    
+                </div>
+        </div>
+                <div class="col-md-4 col-12">
+                    <div class="card pe-click shadow-sm overflow-hidden" data-bs-toggle="modal" data-bs-target="#statusModal{{forloop.counter}}">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-2 d-flex justify-content-center align-items-center text-secondary position-relative" id="statusCardIcon{{forloop.counter}}"> <img class="plant_image" src="{{data.image_src}}"></div>
+                                <div class="col-10">
+                                    <div class="latest_status_cus" style="color: var(--primary-color);">SUB-ORDER: <strong>#{{ data.suborder_id}}</strong></div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                           <h3>{{data.product_name}}</h3> 
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            {% if data.latest_details %}
+                                            <div class="">
+                                                <span class="fw-normal statusCardText" 
+                                                      {% if data.latest_details.status == 'Delivered' %}  
+                                                        style="color: green;">
+                                                        
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                          <path d="M9 0C4.03743 0 0 4.03731 0 8.99995C0 13.9626 4.03743 18 9 18C13.9626 18 18 13.9626 18 8.99995C18 4.03731 13.9627 0 9 0ZM14.168 7.47978L8.51372 13.134C8.2733 13.3744 7.95371 13.5067 7.61374 13.5067C7.27378 13.5067 6.95419 13.3744 6.71377 13.134L3.83204 10.2523C3.59162 10.0119 3.45921 9.69228 3.45921 9.35231C3.45921 9.01225 3.59162 8.69267 3.83204 8.45225C4.07237 8.21184 4.39195 8.07942 4.73201 8.07942C5.07198 8.07942 5.39166 8.21183 5.63198 8.45235L7.61365 10.4339L12.3678 5.67976C12.6082 5.43934 12.9278 5.30702 13.2678 5.30702C13.6078 5.30702 13.9274 5.43934 14.1678 5.67976C14.6642 6.17618 14.6642 6.98355 14.168 7.47978Z" fill="#51A144"/>
+                                                        </svg>
+                                                        {{ data.latest_details.status }}
+                                                        <svg class="iconarrow" xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
+                                                            <path d="M1 0.5L6 5L1 9.5" stroke="#424242" stroke-linecap="round"/>
+                                                            </svg>
+                                                      {% else %} 
+                                                        style="color: #fabb48;">
+                                                        
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="18" viewBox="0 0 23 18" fill="none">
+                                                          <path d="M22.9031 13.7457V9.90016C22.9031 9.32743 22.7397 8.75469 22.494 8.26377L20.0458 4.09098C19.8003 3.60006 19.2276 3.27278 18.6549 3.27278H14.973C14.4003 3.27278 13.9093 3.7637 13.9093 4.33644V13.0911H13.0911V1.63639C13.0911 0.736376 12.3548 0 11.4547 0H0V14.7275H2.45459C2.86368 13.3366 4.09098 12.2729 5.64544 12.2729C7.20012 12.2729 8.50913 13.3366 8.83651 14.7275H14.8094C15.2185 13.3366 16.4458 12.2729 18.0002 12.2729C19.3095 12.2729 20.3729 13.0093 20.8639 14.073C21.1094 14.4821 21.5123 14.7275 21.9214 14.7275C22.494 14.7275 22.985 14.2366 22.9031 13.7457ZM15.5457 9.00015V4.90917H18.8185L21.1912 9.00015H15.5457Z" fill="#DB8D4F"/>
+                                                          <path d="M18.0132 13.0918C16.6223 13.0918 15.5586 14.1555 15.5586 15.5464C15.5586 16.9373 16.6223 18.001 18.0132 18.001C19.4041 18.001 20.4678 16.9373 20.4678 15.5464C20.4678 14.1555 19.4041 13.0918 18.0132 13.0918ZM18.0132 16.6919C17.3586 16.6919 16.8678 16.2009 16.8678 15.5464C16.8678 14.8918 17.3586 14.4009 18.0132 14.4009C18.6678 14.4009 19.1586 14.8918 19.1586 15.5464C19.1586 16.2009 18.6678 16.6919 18.0132 16.6919Z" fill="#DB8D4F"/>
+                                                          <path d="M5.7456 13.0898C4.35472 13.0898 3.29102 14.1535 3.29102 15.5444C3.29102 16.9354 4.35472 17.999 5.7456 17.999C7.13648 17.999 8.20019 16.9354 8.20019 15.5444C8.20019 14.1535 7.13648 13.0898 5.7456 13.0898ZM5.7456 16.6899C5.09099 16.6899 4.60023 16.199 4.60023 15.5444C4.60023 14.8899 5.09105 14.399 5.7456 14.399C6.40016 14.399 6.89097 14.8899 6.89097 15.5444C6.89097 16.199 6.40021 16.6899 5.7456 16.6899Z" fill="#DB8D4F"/>
+                                                          <path d="M5.7255 15.9549C5.95144 15.9549 6.1346 15.7718 6.1346 15.5458C6.1346 15.3199 5.95144 15.1367 5.7255 15.1367C5.49957 15.1367 5.31641 15.3199 5.31641 15.5458C5.31641 15.7718 5.49957 15.9549 5.7255 15.9549Z" fill="#DB8D4F"/>
+                                                          <path d="M18.0107 15.9549C18.2366 15.9549 18.4198 15.7718 18.4198 15.5458C18.4198 15.3199 18.2366 15.1367 18.0107 15.1367C17.7847 15.1367 17.6016 15.3199 17.6016 15.5458C17.6016 15.7718 17.7847 15.9549 18.0107 15.9549Z" fill="#DB8D4F"/>
+                                                        </svg>
+                                                        {{ data.latest_details.status }}
+                                                        <svg class="iconarrow" xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
+                                                            <path d="M1 0.5L6 5L1 9.5" stroke="#424242" stroke-linecap="round"/>
+                                                            </svg>
+                                                      {% endif %}
+                                                </span>
+                                              </div>
+                                              
+                                    {% elif data.cancelled %}
+                                        <div class=""><span class="fw-normal statusCardText" style="color: #ed6d21;">Cancelled</span></div>
+                                    {% else %}
+                                        <div><span class="fw-normal statusCardText" style="color: #ed6d21;">Status will be available shortly.</span></div>
+                                    {% endif %}  
+                                        </div>
+                                    </div>
+                                                                  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 2px;">
+                            {% if data.latest_status == 1 or data.latest_status == 8 %}
+                            <div class="progress-bar bg-danger" style="width: 10%"></div>
+                            {% elif data.latest_status == 2 %}
+                            <div class="progress-bar bg-secondary" style="width: 25%"></div>
+                            {% elif data.latest_status == 3 %}
+                            <div class="progress-bar bg-info" style="width: 50%"></div>
+                            {% elif data.latest_status == 4 %}
+                            <div class="progress-bar bg-global-green" style="width: 75%"></div>
+                            {% else %}
+                            <div class="progress-bar bg-success" style="width: 100%"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="statusModal{{forloop.counter}}" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" >
+                        <div class="modal-content" style="max-height: 80vh;">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="statusModalLabel">Carrier : {{ data.courier }}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body my-3" style="overflow-y: auto;">
+                                {% if data.suborder_details %}
+                                    {% for detail in data.suborder_details %}
+                                    <div class="row mt-2 mx-4">
+                                        <div class="col-3 text-center">
+                                            <div class="fs-5">{{ detail.timestamp }}</div>
+                                            <div class="fw-light" style="margin-top: -0.3rem !important;font-size: 0.8rem !important;">{{ detail.time }}{{ detail.day }}</div>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center justify-content-center position-relative">
+                                        {% if forloop.counter == 1 and detail.status != 'Delivered' %}
+                                            <span class="animated-outcircle"></span>
+                                        {% elif detail.status == 'Delivered' %}
+                                            <span class="delivered_circle"></span>
+                                        {% else %}
+                                            <span class="track-circle position-relative"></span>
+                                        {% endif %}</div>
+                                        <div class="col-7"><p class="" >{{ detail.status }}<br><span class="fw-light">{{ detail.location }}</span></p></div>
+                                    </div>
+                                    {% endfor %}
+                                {% elif data.cancelled %}
+                                <p class=""><span class="fw-light">Order has been Cancelled</span></p>
+                                {% else %}
+                                    <p class=""><span class="fw-light">Shipmenmt details not found.(Recheck once after you are notified that its been picked by our carrier)</span></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    STATUS_CARD_NUMBER += 1;
+                </script>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="w-100" style="height: 3rem; background-color: white;padding: 10px;">
+        <marquee class="bottom_announce_bar" attribute_name="attribute_value" ....more="" attributes="" >
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            <img src="https://cdn.shopify.com/s/files/1/0646/8327/8550/files/Untitled-2.png?v=1680512798" alt="Hamari Kyari Se Aapki Kyari Tak " loading="lazy"><span style="color: #2e524abf; padding: 0px 20px; font-size: 17.6px">Hamari Kyari Se Aapki Kyari Tak </span>
+            </marquee>
+    </div>
+    <footer style="padding-top:50px;padding-bottom:0px;margin-top:0px;border-top:1px solid rgba(46, 82, 74, 0.08);box-sizing:border-box;background:rgb(249, 249, 249) none repeat scroll 0% 0% / auto padding-box border-box;background-image:none;background-position-x:0%;background-position-y:0%;background-size:auto;background-repeat-x:repeat;background-repeat-y:repeat;background-origin:padding-box;-webkit-background-clip:border-box;background-color:rgb(249, 249, 249);background-attachment:scroll;color:rgba(46, 82, 74, 0.75);--color-card-hover: 46, 82, 74;--color-badge-background: 255, 255, 255;--color-badge-border: 46, 82, 74;--alpha-badge-border: 0.1;--color-button: 46, 82, 74;--color-button-text: 46, 82, 74;--alpha-button-background: 1;--alpha-button-border: 1;--color-link: 46, 42, 57;--alpha-link: 0.85;--color-foreground: 46, 82, 74;--color-background: 255, 255, 255;--gradient-background: #ffffff;-webkit-background-clip:border-box;">
+        <div style="padding:0px 55px 55px;padding-bottom:55px;display:block;box-sizing:border-box;max-width:1760px;margin: 0px auto;">
+            <div style="row-gap:66px;margin-bottom:0px;column-gap:32px;box-sizing:border-box;display:flex;flex-wrap:wrap;padding:0px;list-style:outside none none;">
+                <div style="display:block;margin-top:0px;width: calc(25% - 32px * 3 / 4);max-width:100%;box-sizing:border-box;flex-grow:1;flex-shrink:0;">
+                    <h2 style="font-size:25px;font-family:Montserrat;margin-bottom:22px;margin-top:0px;box-sizing:border-box;font-style:normal;font-weight:550;letter-spacing:0.78px;color:rgb(46, 82, 74);line-height:31.3462px;word-break:break-word;">About Kyari</h2>
+                    <div style="margin-bottom:0px;box-sizing:border-box;">
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);margin-bottom:0px;margin-top:0px;box-sizing:border-box;">Kyari (a brand of Select) is an experience of a premium lifestyle through plants and planters.<br style="box-sizing:border-box;" /> With a wide range of captivating, perennial, and oh-so-beautiful indoor plants along with the finest quality of planters, Kyari is dedicated to transforming dull and boring spaces into a lush green island.</p>
+                    </div>
+                </div>
+                <div style="display:block;margin-top:0px;width: calc(25% - 32px * 3 / 4);max-width:100%;box-sizing:border-box;flex-grow:1;flex-shrink:0;">
+                    <h2 style="font-size:25px;font-family:Montserrat;margin-bottom:22px;margin-top:0px;box-sizing:border-box;font-style:normal;font-weight:550;letter-spacing:0.78px;color:rgb(46, 82, 74);line-height:31.3462px;word-break:break-word;">Quick links</h2>
+                    <ul style="margin-bottom:0px;box-sizing:border-box;padding:0px;list-style:outside none none;">
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/about-us" style="padding-top:0px;display:inline-block;font-size:14px;padding-bottom:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                About us
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/contact" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Contact us
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/privacy-policy" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/shipping-policy" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Shipping Policy
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/return-and-refund" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Return &amp; Refund
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/terms-conditions" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:underline solid rgb(58, 58, 58);text-underline-offset:3.3px;transition:text-decoration-thickness 0.1s ease 0s;line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;background-color:rgba(0, 0, 0, 0);">
+                                Terms &amp; Conditions
+                            </a>
+                        </li>
+                        <li style="margin-right:16.5px;padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/return-request" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Return Request
+                            </a>
+                        </li>
+                        <li style="padding:0px;box-sizing:border-box;">
+                            <a href="https://kyari.co/pages/corporate-gifting-new" style="display:inline-block;font-size:14px;padding-bottom:5.5px;padding-top:5.5px;font-family:Montserrat;color:rgb(58, 58, 58);text-decoration:none solid rgb(58, 58, 58);line-height:20px;align-items:center;font-weight:400;font-style:normal;box-sizing:border-box;cursor:pointer;border:0px none rgb(58, 58, 58);box-shadow:none;text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);">
+                                Corporate Gifting
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="display:block;margin-top:0px;width: calc(25% - 32px * 3 / 4);max-width:100%;box-sizing:border-box;flex-grow:1;flex-shrink:0;">
+                    <h2 style="font-size:25px;font-family:Montserrat;margin-bottom:22px;margin-top:0px;box-sizing:border-box;font-style:normal;font-weight:550;letter-spacing:0.78px;color:rgb(46, 82, 74);line-height:31.3462px;word-break:break-word;">Get in touch</h2>
+                    <div style="margin-bottom:0px;box-sizing:border-box;">
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);margin-top:0px;box-sizing:border-box;">Address: 1115, Skye Earth Corporate Park AB Rd Indore, Madhya Pradesh 452010</p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);box-sizing:border-box;">Call us for Support: <a href="tel:8376885182" title="tel:8376885182" style="color:rgb(0, 0, 0);text-underline-offset:3.3px;text-decoration-thickness:auto;transition:text-decoration-thickness 0.1s ease 0s;box-sizing:border-box;text-decoration:none solid rgb(0, 0, 0);">+91 8376885182</a></p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);box-sizing:border-box;"><strong style="box-sizing:border-box;">Email</strong></p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);box-sizing:border-box;">For Support : <a href="mailto:support@kyari.co" title="mailto:support@kyari.co" style="color:rgb(0, 0, 0);text-underline-offset:3.3px;text-decoration-thickness:auto;transition:text-decoration-thickness 0.1s ease 0s;box-sizing:border-box;text-decoration:none solid rgb(0, 0, 0);">support@kyari.co</a></p>
+                        <p style="padding:0px;font-family:Montserrat;color:rgb(0, 0, 0);margin-bottom:0px;box-sizing:border-box;">For Bulk Orders : <a href="mailto:corporate@kyari.co" title="mailto:corporate@kyari.co" style="color:rgb(0, 0, 0);text-underline-offset:3.3px;text-decoration-thickness:auto;transition:text-decoration-thickness 0.1s ease 0s;box-sizing:border-box;text-decoration:none solid rgb(0, 0, 0);">corporate@kyari. co</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="flex-wrap:nowrap;justify-content:space-between;display:flex;align-items:flex-end;margin-top:33px;box-sizing:border-box;">
+                <ul role="list" style="display:flex;flex-wrap:wrap-reverse;justify-content:flex-start;flex:1 1 100%;box-sizing:border-box;margin:0px;padding:0px;list-style:outside none none;">
+                    <li style="box-sizing:border-box;">
+                        <a href="https://www.facebook.com/Kyariofficial/" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 18 18" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path fill="currentColor" d="M16.42.61c.27 0 .5.1.69.28.19.2.28.42.28.7v15.44c0 .27-.1.5-.28.69a.94.94 0 01-.7.28h-4.39v-6.7h2.25l.31-2.65h-2.56v-1.7c0-.4.1-.72.28-.93.18-.2.5-.32 1-.32h1.37V3.35c-.6-.06-1.27-.1-2.01-.1-1.01 0-1.83.3-2.45.9-.62.6-.93 1.44-.93 2.53v1.97H7.04v2.65h2.24V18H.98c-.28 0-.5-.1-.7-.28a.94.94 0 01-.28-.7V1.59c0-.27.1-.5.28-.69a.94.94 0 01.7-.28h15.44z" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">Facebook</span> </a>
+                    </li>
+                    <li style="box-sizing:border-box;">
+                        <a href="https://in.pinterest.com/kyari_co/" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 17 18" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path fill="currentColor" d="M8.48.58a8.42 8.42 0 015.9 2.45 8.42 8.42 0 011.33 10.08 8.28 8.28 0 01-7.23 4.16 8.5 8.5 0 01-2.37-.32c.42-.68.7-1.29.85-1.8l.59-2.29c.14.28.41.52.8.73.4.2.8.31 1.24.31.87 0 1.65-.25 2.34-.75a4.87 4.87 0 001.6-2.05 7.3 7.3 0 00.56-2.93c0-1.3-.5-2.41-1.49-3.36a5.27 5.27 0 00-3.8-1.43c-.93 0-1.8.16-2.58.48A5.23 5.23 0 002.85 8.6c0 .75.14 1.41.43 1.98.28.56.7.96 1.27 1.2.1.04.19.04.26 0 .07-.03.12-.1.15-.2l.18-.68c.05-.15.02-.3-.11-.45a2.35 2.35 0 01-.57-1.63A3.96 3.96 0 018.6 4.8c1.09 0 1.94.3 2.54.89.61.6.92 1.37.92 2.32 0 .8-.11 1.54-.33 2.21a3.97 3.97 0 01-.93 1.62c-.4.4-.87.6-1.4.6-.43 0-.78-.15-1.06-.47-.27-.32-.36-.7-.26-1.13a111.14 111.14 0 01.47-1.6l.18-.73c.06-.26.09-.47.09-.65 0-.36-.1-.66-.28-.89-.2-.23-.47-.35-.83-.35-.45 0-.83.2-1.13.62-.3.41-.46.93-.46 1.56a4.1 4.1 0 00.18 1.15l.06.15c-.6 2.58-.95 4.1-1.08 4.54-.12.55-.16 1.2-.13 1.94a8.4 8.4 0 01-5-7.65c0-2.3.81-4.28 2.44-5.9A8.04 8.04 0 018.48.57z" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">Pinterest</span> </a>
+                    </li>
+                    <li style="box-sizing:border-box;">
+                        <a href="https://www.instagram.com/try_kyari/" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 18 18" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path fill="currentColor" d="M8.77 1.58c2.34 0 2.62.01 3.54.05.86.04 1.32.18 1.63.3.41.17.7.35 1.01.66.3.3.5.6.65 1 .12.32.27.78.3 1.64.05.92.06 1.2.06 3.54s-.01 2.62-.05 3.54a4.79 4.79 0 01-.3 1.63c-.17.41-.35.7-.66 1.01-.3.3-.6.5-1.01.66-.31.12-.77.26-1.63.3-.92.04-1.2.05-3.54.05s-2.62 0-3.55-.05a4.79 4.79 0 01-1.62-.3c-.42-.16-.7-.35-1.01-.66-.31-.3-.5-.6-.66-1a4.87 4.87 0 01-.3-1.64c-.04-.92-.05-1.2-.05-3.54s0-2.62.05-3.54c.04-.86.18-1.32.3-1.63.16-.41.35-.7.66-1.01.3-.3.6-.5 1-.65.32-.12.78-.27 1.63-.3.93-.05 1.2-.06 3.55-.06zm0-1.58C6.39 0 6.09.01 5.15.05c-.93.04-1.57.2-2.13.4-.57.23-1.06.54-1.55 1.02C1 1.96.7 2.45.46 3.02c-.22.56-.37 1.2-.4 2.13C0 6.1 0 6.4 0 8.77s.01 2.68.05 3.61c.04.94.2 1.57.4 2.13.23.58.54 1.07 1.02 1.56.49.48.98.78 1.55 1.01.56.22 1.2.37 2.13.4.94.05 1.24.06 3.62.06 2.39 0 2.68-.01 3.62-.05.93-.04 1.57-.2 2.13-.41a4.27 4.27 0 001.55-1.01c.49-.49.79-.98 1.01-1.56.22-.55.37-1.19.41-2.13.04-.93.05-1.23.05-3.61 0-2.39 0-2.68-.05-3.62a6.47 6.47 0 00-.4-2.13 4.27 4.27 0 00-1.02-1.55A4.35 4.35 0 0014.52.46a6.43 6.43 0 00-2.13-.41A69 69 0 008.77 0z" style="box-sizing:border-box;"></path>
+                                <path fill="currentColor" d="M8.8 4a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 7.43a2.92 2.92 0 110-5.85 2.92 2.92 0 010 5.85zM13.43 5a1.05 1.05 0 100-2.1 1.05 1.05 0 000 2.1z" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">Instagram</span> </a>
+                    </li>
+                    <li style="box-sizing:border-box;">
+                        <a href="https://www.youtube.com/channel/UCYMU5VKLGGUG-NivdvfBQ-A" style="align-items:center;display:flex;padding:14.3px;color:rgb(46, 82, 74);box-sizing:border-box;cursor:pointer;border:0px none rgb(46, 82, 74);box-shadow:none;text-decoration:underline solid rgb(46, 82, 74);text-underline-offset:3.3px;background-color:rgba(0, 0, 0, 0);font-size:15.4px;font-family:Montserrat, sans-serif;"><svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 100 70" style="height:19.7969px;width: 1.8rem;box-sizing:border-box;">
+                                <path d="M98 11c2 7.7 2 24 2 24s0 16.3-2 24a12.5 12.5 0 01-9 9c-7.7 2-39 2-39 2s-31.3 0-39-2a12.5 12.5 0 01-9-9c-2-7.7-2-24-2-24s0-16.3 2-24c1.2-4.4 4.6-7.8 9-9 7.7-2 39-2 39-2s31.3 0 39 2c4.4 1.2 7.8 4.6 9 9zM40 50l26-15-26-15v30z" fill="currentColor" style="box-sizing:border-box;">
+                                </path>
+                            </svg> <span style="box-sizing:border-box;overflow:hidden;width: 1px;height:1px;margin:-1px;padding:0px;border:0px none rgb(46, 82, 74);clip:rect(0px, 0px, 0px, 0px);position:absolute;overflow-wrap:normal;">YouTube</span> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1 @@
+web: gunicorn ftm_selectbrands.wsgi

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1rzl0g&ol*#wo*sq*t=td8x5wy@8i!_7dk6+1p1ct99eendyg-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["kyari.co"]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
